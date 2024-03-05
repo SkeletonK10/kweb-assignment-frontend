@@ -8,6 +8,8 @@ const Header = styled.div`
   width: 100vw;
   height: 50px;
   
+  border-bottom: 2px solid black;
+  
   display: flex;
   align-items: center;
 `;
