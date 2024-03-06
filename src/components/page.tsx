@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import Header from './header';
 
 const PageStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 type PageProps = { children: React.ReactNode };
