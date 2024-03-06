@@ -1,5 +1,6 @@
 export const URL = {
   main: '/',
+  register: '/register/',
 }
 
 export const text = {
