@@ -1,8 +1,12 @@
 import React from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import styled from '@emotion/styled';
 
-import { URL } from '../data';
+import { ILoginInfo } from '../data/types';
+
+import { text, URL } from '../data';
 
 const LoginFormStyle = styled.form`
   margin: 50px auto;
@@ -30,12 +34,32 @@ const RegisterButton = styled.button`
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  
+  const { register, handleSubmit } = useForm<ILoginInfo>();
+  
+  const onSubmit: SubmitHandler<ILoginInfo> = async (data: ILoginInfo) => {
+    try {
+      const response = await axios.post(`localhost:8000/login/`, data);
+      if (response.data.code) {
+        alert(response.data.msg);
+      }
+      else {
+        alert(text.login.success);
+        window.location.reload();
+      }
+    } catch (err) {
+      alert(text.login.error);
+    } finally {
+      console.log(data);
+    }
+  }
+  
   return (
-    <LoginFormStyle>
+    <LoginFormStyle onSubmit={handleSubmit(onSubmit)}>
       <div>ID</div>
-      <InputBox id='id' type='text'></InputBox>
+      <InputBox type='text' {...register("id")}></InputBox>
       <div>PW</div>
-      <InputBox id='pw' type='password'></InputBox>
+      <InputBox type='password' {...register("pw")}></InputBox>
       <div>
         <SubmitButton type='submit' value='로그인' />
         <RegisterButton type='button' onClick={() => {navigate(URL.register)}}>회원가입</RegisterButton>
