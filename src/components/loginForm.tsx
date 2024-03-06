@@ -28,7 +28,7 @@ const RegisterButton = styled.button`
   margin: 20px;
 `;
 
-const PageHeader: React.FC = () => {
+const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   return (
     <LoginFormStyle>
@@ -44,4 +44,4 @@ const PageHeader: React.FC = () => {
   );
 }
 
-export default PageHeader;
+export default LoginForm;
