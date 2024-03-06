@@ -3,7 +3,7 @@ import React from 'react';
 import Page from '../../components/page';
 
 
-const Comp: React.FC = () => {
+const MainPage: React.FC = () => {
   return (
     <Page>
       <></>
@@ -11,4 +11,4 @@ const Comp: React.FC = () => {
   );
 }
 
-export default Comp;
+export default MainPage;

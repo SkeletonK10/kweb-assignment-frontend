@@ -28,7 +28,7 @@ const HeaderTitle = styled.div`
   font-size: 1.3rem;
 `;
 
-const Comp: React.FC = () => {
+const PageHeader: React.FC = () => {
   const navigate = useNavigate();
   return (
     <Header>
@@ -39,4 +39,4 @@ const Comp: React.FC = () => {
   );
 }
 
-export default Comp;
+export default PageHeader;
