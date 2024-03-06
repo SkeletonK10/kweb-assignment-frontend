@@ -1,5 +1,11 @@
 import React from 'react';
+import axios from 'axios';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import styled from '@emotion/styled';
+
+import { IRegisterInfo } from '../data/types';
+
+import { text } from '../data';
 
 const RegisterFormStyle = styled.form`
   margin: 50px auto;
@@ -21,20 +27,38 @@ const SubmitButton = styled.input`
 `;
 
 const RegisterForm: React.FC = () => {
+  const { register, handleSubmit } = useForm<IRegisterInfo>();
+  
+  const onSubmit: SubmitHandler<IRegisterInfo> = async (data: IRegisterInfo) => {
+    try {
+      const response = await axios.post(`localhost:8000/register/`, data);
+      if (response.data.code) {
+        alert(response.data.msg);
+      }
+      else {
+        alert(text.register.success);
+        window.location.reload();
+      }
+    } catch (err) {
+      alert(text.register.error);
+    } finally {
+      console.log(data);
+    }
+  }
   return (
-    <RegisterFormStyle>
+    <RegisterFormStyle onSubmit={handleSubmit(onSubmit)}>
       <div style={{margin: "10px"}}>
-        <input type="radio" name="isStudent" value="true" defaultChecked={true} />학생
-        <input type="radio" name="isStudent" value="false" />교수자
+        <input type="radio" {...register("isStudent")} value="true" defaultChecked={true} />학생
+        <input type="radio" {...register("isStudent")} value="false" />교수자
       </div>
       <div>ID</div>
-      <InputBox id='id' type='text'></InputBox>
+      <InputBox type='text' {...register("id")}></InputBox>
       <div>비밀번호</div>
-      <InputBox id='pw' type='password'></InputBox>
+      <InputBox type='password' {...register("pw")}></InputBox>
       <div>이름</div>
-      <InputBox id='name' type='text'></InputBox>
+      <InputBox type='text' {...register("name")}></InputBox>
       <div>학번</div>
-      <InputBox id='stID' type='text' onChange={(e) => {e.target.value = e.target.value.replace(/[^0-9]/g, '');}}></InputBox>
+      <InputBox type='text' {...register("stID")} onChange={(e) => {e.target.value = e.target.value.replace(/[^0-9]/g, '');}}></InputBox>
       <div>
         <SubmitButton type='submit' value='회원가입' />
       </div>
