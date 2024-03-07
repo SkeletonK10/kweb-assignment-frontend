@@ -51,9 +51,9 @@ const RegisterForm: React.FC = () => {
         <input type="radio" {...register("isStudent")} value="true" defaultChecked={true} />학생
         <input type="radio" {...register("isStudent")} value="false" />교수자
       </div>
-      <div>ID</div>
+      <div>ID (3자 이상 32자 이하의 영문 및 숫자)</div>
       <InputBox type='text' {...register("id")}></InputBox>
-      <div>비밀번호</div>
+      <div>비밀번호 (8자 이상의 영문 및 숫자)</div>
       <InputBox type='password' {...register("pw")}></InputBox>
       <div>이름</div>
       <InputBox type='text' {...register("name")}></InputBox>
