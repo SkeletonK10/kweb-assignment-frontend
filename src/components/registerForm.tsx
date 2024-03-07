@@ -31,7 +31,7 @@ const RegisterForm: React.FC = () => {
   
   const onSubmit: SubmitHandler<IRegisterInfo> = async (data: IRegisterInfo) => {
     try {
-      const response = await axios.post(`localhost:8000/register/`, data);
+      const response = await axios.post(`http://localhost:8000/register/`, data);
       if (response.data.code) {
         alert(response.data.msg);
       }

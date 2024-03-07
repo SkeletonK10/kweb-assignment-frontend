@@ -39,7 +39,7 @@ const LoginForm: React.FC = () => {
   
   const onSubmit: SubmitHandler<ILoginInfo> = async (data: ILoginInfo) => {
     try {
-      const response = await axios.post(`localhost:8000/login/`, data);
+      const response = await axios.post(`http://localhost:8000/login/`, data);
       if (response.data.code) {
         alert(response.data.msg);
       }
