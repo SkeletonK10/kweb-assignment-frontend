@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 import { IRegisterInfo } from '../data/types';
 
-import { text } from '../data';
+import { text, URL } from '../data';
 
 const RegisterFormStyle = styled.form`
   margin: 50px auto;
@@ -27,6 +28,7 @@ const SubmitButton = styled.input`
 `;
 
 const RegisterForm: React.FC = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<IRegisterInfo>();
   
   const onSubmit: SubmitHandler<IRegisterInfo> = async (data: IRegisterInfo) => {
@@ -37,7 +39,7 @@ const RegisterForm: React.FC = () => {
       }
       else {
         alert(text.register.success);
-        window.location.reload();
+        navigate(URL.main);
       }
     } catch (err) {
       alert(text.register.error);
