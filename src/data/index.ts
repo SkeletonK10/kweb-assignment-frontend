@@ -1,6 +1,7 @@
 export const URL = {
   main: '/',
   register: '/register/',
+  lobby: '/lobby/',
 }
 
 export const text = {

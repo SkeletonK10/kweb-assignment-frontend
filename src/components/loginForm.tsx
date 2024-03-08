@@ -34,7 +34,6 @@ const RegisterButton = styled.button`
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
-  
   const { register, handleSubmit } = useForm<ILoginInfo>();
   
   const onSubmit: SubmitHandler<ILoginInfo> = async (data: ILoginInfo) => {
@@ -45,7 +44,8 @@ const LoginForm: React.FC = () => {
       }
       else {
         alert(text.login.success);
-        window.location.reload();
+        localStorage.setItem('accessToken', response.data.token);
+        navigate(URL.lobby);
       }
     } catch (err) {
       alert(text.login.error);
