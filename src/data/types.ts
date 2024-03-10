@@ -10,3 +10,9 @@ export interface IRegisterInfo {
   stID: number;
   isStudent: boolean;
 };
+
+export interface ILectureInfo {
+  id: number;
+  name: string;
+  professor: string;
+}
