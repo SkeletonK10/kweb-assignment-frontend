@@ -18,17 +18,31 @@ export interface IUserInfo {
   isstudent: boolean;
 };
 
+export interface IArticleWriteInfo {
+  title: string;
+  content: string;
+}
+
 export interface ISimpleArticleInfo {
   id: number;
   title: string;
   createdat: string;
-}
+};
+
+export interface IArticleInfo {
+  id: number;
+  title: string;
+  createdat: string;
+  lecture: string;
+  professor: number;
+  content: string;
+};
 
 export interface ISimpleLectureInfo {
   id: number;
   name: string;
   professor: string;
-}
+};
 
 export interface ILectureInfo {
   id: number;
@@ -36,4 +50,4 @@ export interface ILectureInfo {
   professor: string;
   professorid: string;
   articles: Array<ISimpleArticleInfo>;
-}
+};

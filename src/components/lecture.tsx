@@ -39,7 +39,7 @@ const Lecture: React.FC<LectureProps> = ({ id, userInfo }) => {
   
   const articles = lectureInfo ? lectureInfo.articles.map((article: ISimpleArticleInfo, index: number) => {
     return (
-      <div key={index}>
+      <div key={index} onClick={() => navigate(`${URL.article}${article.id}`)}>
         <div>{article.title}</div>
         <div>{article.createdat}</div>
       </div>
@@ -50,7 +50,7 @@ const Lecture: React.FC<LectureProps> = ({ id, userInfo }) => {
       <>
         <div>
           <h1>{lectureInfo.name}</h1>
-          {lectureInfo.professorid === userInfo.id ? <button onClick={() => { navigate(URL.writeArticle) }}>글쓰기</button> : <></>}
+          {lectureInfo.professorid === userInfo.id ? <button onClick={() => { navigate(`${URL.writeArticle}${id}`) }}>글쓰기</button> : <></>}
         </div>
         {lectureInfo.professor}
         {articles}

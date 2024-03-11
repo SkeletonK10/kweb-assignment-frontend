@@ -7,10 +7,12 @@ import MainPage from './pages/MainPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginNeedRoute from './components/LoginNeedRoute';
 import LobbyPage from './pages/LobbyPage';
+import ArticlePage from './pages/ArticlePage';
+import LecturePage from './pages/LecturePage';
+import ArticleWritePage from './pages/WriteArticlePage';
 
 import { text, URL } from './data';
 import { IUserInfo } from './data/types';
-import LecturePage from './pages/LecturePage';
 
 const App: React.FC = () => {
   const [userInfo, setUserInfo] = useState<IUserInfo>();
@@ -42,9 +44,11 @@ const App: React.FC = () => {
       <Routes>
         <Route path={URL.main} element={<MainPage />} />
         <Route path={URL.register} element={<RegisterPage />} />
-        <Route path={`${URL.lecture}:id/`} element={<LecturePage userInfo={userInfo} />} />
         <Route element={<LoginNeedRoute />}>
           <Route path={URL.lobby} element={<LobbyPage userInfo={userInfo} />} />
+          <Route path={`${URL.lecture}:id/`} element={<LecturePage userInfo={userInfo} />} />
+          <Route path={`${URL.article}:id/`} element={<ArticlePage userInfo={userInfo} />} />
+          <Route path={`${URL.writeArticle}:id/`} element={<ArticleWritePage userInfo={userInfo} />} />
         </Route>
       </Routes>
     </BrowserRouter>

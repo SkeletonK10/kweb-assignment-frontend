@@ -3,6 +3,7 @@ export const URL = {
   register: '/register/',
   lobby: '/lobby/',
   lecture: '/lecture/',
+  article: '/article/',
   writeArticle: '/writearticle/',
   writeLecture: '/writeLecture/',
 }
@@ -13,7 +14,7 @@ export const text = {
   },
   
   main: {
-    title: '서비스 제목을 입력하세요.',
+    title: '온라인 교육 플랫폼',
   },
   
   login: {
@@ -33,7 +34,18 @@ export const text = {
   },
   
   lecture: {
-    error: '로비 페이지 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
+    error: '강의 페이지 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
     noArticle: '현재 작성된 게시글이 없습니다.',
+  },
+  
+  article: {
+    error: '게시글 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
+  },
+  
+  articleWrite: {
+    success: '게시글이 작성되었습니다!',
+    forbidden: '강의 게시글은 담당 교수만 작성할 수 있습니다.',
+    error: '게시글 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
+    lectureNameError: '게시글을 작성할 강의에 문제가 발생했습니다.',
   }
 }
