@@ -6,6 +6,10 @@ export const URL = {
 }
 
 export const text = {
+  page: {
+    error: '페이지 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
+  },
+  
   main: {
     title: '서비스 제목을 입력하세요.',
   },

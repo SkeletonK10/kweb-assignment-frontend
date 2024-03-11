@@ -11,6 +11,13 @@ export interface IRegisterInfo {
   isstudent: boolean;
 };
 
+export interface IUserInfo {
+  id: string;
+  name: string;
+  stid: number;
+  isstudent: boolean;
+};
+
 export interface ILectureInfo {
   id: number;
   name: string;

@@ -1,42 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import Page from '../../components/page';
 import TakingList from '../../components/takingList';
 
-import { text } from '../../data';
+import { IUserInfo } from '../../data/types';
 
-interface IUserInfo {
-  name: string;
-  isstudent: boolean;
-};
+interface LobbyInfo {
+  userInfo?: IUserInfo;
+}
 
-const LobbyPage: React.FC = () => {
-  const [userInfo, setUserInfo] = useState<IUserInfo>();
-  const getUserInfo = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8000/user/`, { headers: { authorization: localStorage.getItem('accessToken') } });
-      if (response.data.code) {
-        alert(response.data.msg);
-        window.location.reload();
-      }
-      setUserInfo(response.data);
-    } catch (err) {
-      alert(text.lobby.error);
-      console.log(err);
-      window.location.reload();
-    }
-  }
-  
+const LobbyPage: React.FC<LobbyInfo> = ({ userInfo }) => {
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     window.location.reload();
   }
-  
-  useEffect(() => {
-    getUserInfo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
   return (
     userInfo ?
     <Page>
