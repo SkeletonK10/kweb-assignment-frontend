@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import { ILectureInfo } from '../data/types';
+import { ISimpleLectureInfo } from '../data/types';
 
 import { text, URL } from '../data';
 
@@ -12,7 +12,7 @@ interface UserProps {
 
 const TakingList: React.FC<UserProps> = ({ isstudent }) => {
   const navigate = useNavigate();
-  const [list, setList] = useState<Array<ILectureInfo>>([]);
+  const [list, setList] = useState<Array<ISimpleLectureInfo>>([]);
   
   const getList = async () => {
     try {
@@ -30,7 +30,7 @@ const TakingList: React.FC<UserProps> = ({ isstudent }) => {
     }
   }
   
-  const entries = list.map((row: ILectureInfo, index: number) => {
+  const entries = list.map((row: ISimpleLectureInfo, index: number) => {
     return (
       <tr key={index} onClick={() => navigate(`${URL.lecture}${row.id}`)}>
         <td>{row.id}</td>

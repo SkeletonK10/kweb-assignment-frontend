@@ -10,13 +10,14 @@ import LobbyPage from './pages/LobbyPage';
 
 import { text, URL } from './data';
 import { IUserInfo } from './data/types';
+import LecturePage from './pages/LecturePage';
 
 const App: React.FC = () => {
   const [userInfo, setUserInfo] = useState<IUserInfo>();
   const getUserInfo = async () => {
     try {
       const token = localStorage.getItem('accessToken');
-      if (token === undefined)
+      if (token === null)
         return;
       const response = await axios.get(`http://localhost:8000/user/`, { headers: { authorization: token } });
       if (response.data.code) {
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       setUserInfo(response.data);
     } catch (err) {
       alert(text.page.error);
+      localStorage.removeItem('accessToken');
       console.log(err);
       window.location.reload();
     }
@@ -37,13 +39,14 @@ const App: React.FC = () => {
   }, []);
   return (
     <BrowserRouter>
-        <Routes>
-          <Route path={URL.main} element={<MainPage />} />
+      <Routes>
+        <Route path={URL.main} element={<MainPage />} />
         <Route path={URL.register} element={<RegisterPage />} />
+        <Route path={`${URL.lecture}:id/`} element={<LecturePage userInfo={userInfo} />} />
         <Route element={<LoginNeedRoute />}>
           <Route path={URL.lobby} element={<LobbyPage userInfo={userInfo} />} />
         </Route>
-        </Routes>
+      </Routes>
     </BrowserRouter>
   );
 }

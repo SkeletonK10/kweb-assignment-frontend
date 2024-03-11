@@ -46,6 +46,7 @@ const LoginForm: React.FC = () => {
         alert(text.login.success);
         localStorage.setItem('accessToken', response.data.token);
         navigate(URL.lobby);
+        window.location.reload();
       }
     } catch (err) {
       alert(text.login.error);

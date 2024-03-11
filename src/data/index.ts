@@ -3,6 +3,8 @@ export const URL = {
   register: '/register/',
   lobby: '/lobby/',
   lecture: '/lecture/',
+  writeArticle: '/writearticle/',
+  writeLecture: '/writeLecture/',
 }
 
 export const text = {
@@ -28,5 +30,10 @@ export const text = {
     userNotFound: '존재하지 않는 유저 정보입니다.',
     error: '로비 페이지 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
     listError: '강의 목록 리스트 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.'
+  },
+  
+  lecture: {
+    error: '로비 페이지 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
+    noArticle: '현재 작성된 게시글이 없습니다.',
   }
 }
