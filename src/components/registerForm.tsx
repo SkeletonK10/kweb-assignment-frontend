@@ -50,8 +50,8 @@ const RegisterForm: React.FC = () => {
   return (
     <RegisterFormStyle onSubmit={handleSubmit(onSubmit)}>
       <div style={{margin: "10px"}}>
-        <input type="radio" {...register("isStudent")} value="true" defaultChecked={true} />학생
-        <input type="radio" {...register("isStudent")} value="false" />교수자
+        <input type="radio" {...register("isstudent")} value="true" defaultChecked={true} />학생
+        <input type="radio" {...register("isstudent")} value="false" />교수자
       </div>
       <div>ID (3자 이상 32자 이하의 영문 및 숫자)</div>
       <InputBox type='text' {...register("id")}></InputBox>
@@ -60,7 +60,7 @@ const RegisterForm: React.FC = () => {
       <div>이름</div>
       <InputBox type='text' {...register("name")}></InputBox>
       <div>학번</div>
-      <InputBox type='text' {...register("stID")} onChange={(e) => {e.target.value = e.target.value.replace(/[^0-9]/g, '');}}></InputBox>
+      <InputBox type='text' {...register("stid")} onChange={(e) => {e.target.value = e.target.value.replace(/[^0-9]/g, '');}}></InputBox>
       <div>
         <SubmitButton type='submit' value='회원가입' />
       </div>

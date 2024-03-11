@@ -7,8 +7,8 @@ export interface IRegisterInfo {
   id: string;
   pw: string;
   name: string;
-  stID: number;
-  isStudent: boolean;
+  stid: number;
+  isstudent: boolean;
 };
 
 export interface ILectureInfo {
