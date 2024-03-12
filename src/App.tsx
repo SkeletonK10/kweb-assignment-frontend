@@ -9,7 +9,8 @@ import LoginNeedRoute from './components/LoginNeedRoute';
 import LobbyPage from './pages/LobbyPage';
 import ArticlePage from './pages/ArticlePage';
 import LecturePage from './pages/LecturePage';
-import ArticleWritePage from './pages/WriteArticlePage';
+import ArticleWritePage from './pages/ArticleWritePage';
+import LectureOpenPage from './pages/LectureOpenPage';
 
 import { text, URL } from './data';
 import { IUserInfo } from './data/types';
@@ -48,7 +49,8 @@ const App: React.FC = () => {
           <Route path={URL.lobby} element={<LobbyPage userInfo={userInfo} />} />
           <Route path={`${URL.lecture}:id/`} element={<LecturePage userInfo={userInfo} />} />
           <Route path={`${URL.article}:id/`} element={<ArticlePage userInfo={userInfo} />} />
-          <Route path={`${URL.writeArticle}:id/`} element={<ArticleWritePage userInfo={userInfo} />} />
+          <Route path={`${URL.articleWrite}:id/`} element={<ArticleWritePage userInfo={userInfo} />} />
+          <Route path={`${URL.lectureOpen}`} element={<LectureOpenPage userInfo={userInfo} />} />
         </Route>
       </Routes>
     </BrowserRouter>

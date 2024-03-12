@@ -12,7 +12,7 @@ interface ArticleProps {
   userInfo?: IUserInfo;
 };
 
-const ArticlePage: React.FC<ArticleProps> = ({ userInfo }) => {
+const ArticleWritePage: React.FC<ArticleProps> = ({ userInfo }) => {
   const { id } = useParams();
   const [lectureName, setLectureName] = useState<string>('');
   
@@ -52,4 +52,4 @@ const ArticlePage: React.FC<ArticleProps> = ({ userInfo }) => {
   );
 }
 
-export default ArticlePage;
+export default ArticleWritePage;

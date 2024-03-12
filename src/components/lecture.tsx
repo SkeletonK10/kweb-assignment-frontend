@@ -50,7 +50,7 @@ const Lecture: React.FC<LectureProps> = ({ id, userInfo }) => {
       <>
         <div>
           <h1>{lectureInfo.name}</h1>
-          {lectureInfo.professorid === userInfo.id ? <button onClick={() => { navigate(`${URL.writeArticle}${id}`) }}>글쓰기</button> : <></>}
+          {lectureInfo.professorid === userInfo.id ? <button onClick={() => { navigate(`${URL.articleWrite}${id}`) }}>글쓰기</button> : <></>}
         </div>
         {lectureInfo.professor}
         {articles}

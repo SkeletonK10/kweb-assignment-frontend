@@ -51,3 +51,7 @@ export interface ILectureInfo {
   professorid: string;
   articles: Array<ISimpleArticleInfo>;
 };
+
+export interface ILectureOpenInfo {
+  name: string;
+};

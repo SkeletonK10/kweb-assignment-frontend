@@ -4,8 +4,8 @@ export const URL = {
   lobby: '/lobby/',
   lecture: '/lecture/',
   article: '/article/',
-  writeArticle: '/writearticle/',
-  writeLecture: '/writeLecture/',
+  articleWrite: '/articlewrite/',
+  lectureOpen: '/lectureopen/',
 }
 
 export const text = {
@@ -47,5 +47,10 @@ export const text = {
     forbidden: '강의 게시글은 담당 교수만 작성할 수 있습니다.',
     error: '게시글 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
     lectureNameError: '게시글을 작성할 강의에 문제가 발생했습니다.',
-  }
+  },
+  
+  lectureOpen: {
+    success: '강의를 성공적으로 개설했습니다!',
+    error: '강의 개설 중 에러가 발생했습니다. 다시 시도해 주세요.',
+  },
 }
