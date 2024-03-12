@@ -11,6 +11,7 @@ import ArticlePage from './pages/ArticlePage';
 import LecturePage from './pages/LecturePage';
 import ArticleWritePage from './pages/ArticleWritePage';
 import LectureOpenPage from './pages/LectureOpenPage';
+import LectureListPage from './pages/LectureListPage';
 
 import { text, URL } from './data';
 import { IUserInfo } from './data/types';
@@ -51,6 +52,7 @@ const App: React.FC = () => {
           <Route path={`${URL.article}:id/`} element={<ArticlePage userInfo={userInfo} />} />
           <Route path={`${URL.articleWrite}:id/`} element={<ArticleWritePage userInfo={userInfo} />} />
           <Route path={`${URL.lectureOpen}`} element={<LectureOpenPage userInfo={userInfo} />} />
+          <Route path={`${URL.lectureList}`} element={<LectureListPage userInfo={userInfo} />} />
         </Route>
       </Routes>
     </BrowserRouter>

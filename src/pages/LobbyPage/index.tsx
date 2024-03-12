@@ -24,8 +24,9 @@ const LobbyPage: React.FC<LobbyInfo> = ({ userInfo }) => {
         환영합니다, {userInfo.name}님!<br />
         당신은 {userInfo.isstudent ? "학생" : "교수자"}입니다.
         {userInfo.isstudent ? <></> : <button onClick={() => navigate(URL.lectureOpen)}>강의 개설</button>}
+        <button onClick={() => navigate(URL.lectureList)}>전체 강의 목록</button>
         <button onClick={handleLogout}>로그아웃</button>
-          <TakingList isstudent={userInfo.isstudent} />
+          <TakingList userInfo={userInfo} />
       </Page>
       :
       <></>

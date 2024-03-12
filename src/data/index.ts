@@ -6,6 +6,7 @@ export const URL = {
   article: '/article/',
   articleWrite: '/articlewrite/',
   lectureOpen: '/lectureopen/',
+  lectureList: '/lecturelist',
 }
 
 export const text = {
@@ -53,4 +54,10 @@ export const text = {
     success: '강의를 성공적으로 개설했습니다!',
     error: '강의 개설 중 에러가 발생했습니다. 다시 시도해 주세요.',
   },
+  
+  lectureList: {
+    listError: '강의 목록 로딩 중 에러가 발생했습니다. 다시 시도해 주세요.',
+    registerSuccess: '수강신청 성공!',
+    registerError: '수강 신청 중 에러가 발생했습니다. 다시 시도해 주세요.',
+  }
 }
