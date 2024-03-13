@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
+import axios from 'axios';
 
 import { ISimpleLectureInfo, IUserInfo } from '../data/types';
 
@@ -33,7 +34,6 @@ const TakingList: React.FC<UserProps> = ({ userInfo }) => {
   const entries = list.map((row: ISimpleLectureInfo, index: number) => {
     return (
       <tr key={index} onClick={() => navigate(`${URL.lecture}${row.id}`)}>
-        <td>{row.id}</td>
         <td>{row.name}</td>
         <td>{row.professor}</td>
       </tr>
@@ -45,14 +45,14 @@ const TakingList: React.FC<UserProps> = ({ userInfo }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <table>
+    <Table striped bordered hover>
       <thead>
         <tr><th>{userInfo.isstudent ? "수강 중인 강의" : "개설한 강의"}</th></tr>
       </thead>
       <tbody>
         {entries}
       </tbody>
-    </table>
+    </Table>
   );
 }
 

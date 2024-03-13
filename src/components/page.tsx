@@ -3,18 +3,27 @@ import styled from '@emotion/styled';
 
 import Header from './header';
 
+import { IUserInfo } from '../data/types';
+
 const PageStyle = styled.div`
+  width: 800px;
+  
+  margin: auto;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-type PageProps = { children: React.ReactNode };
+interface PageProps {
+  userInfo?: IUserInfo;
+  children: React.ReactNode
+};
 
-const Page: React.FC<PageProps> = ({ children }: PageProps) => {
+const Page: React.FC<PageProps> = ({ userInfo, children }) => {
   return (
     <PageStyle>
-      <Header />
+      <Header userInfo={userInfo} />
       {children}
     </PageStyle>
   );

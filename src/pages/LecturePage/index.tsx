@@ -14,7 +14,7 @@ const LecturePage: React.FC<LectureProps> = ({ userInfo }) => {
   const { id } = useParams();
   return (
     userInfo ?
-      <Page>
+      <Page userInfo={userInfo}>
         <Lecture id={Number(id)} userInfo={userInfo} />
       </Page>
       :

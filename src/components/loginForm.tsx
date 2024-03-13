@@ -2,35 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import styled from '@emotion/styled';
 
 import { ILoginInfo } from '../data/types';
 
 import { text, URL } from '../data';
-
-const LoginFormStyle = styled.form`
-  margin: 50px auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const InputBox = styled.input`
-  width: 200px;
-  
-  margin: 10px;
-`;
-
-const SubmitButton = styled.input`
-  width: 70px;
-  margin: 20px;
-`;
-
-const RegisterButton = styled.button`
-  width: 70px;
-  margin: 20px;
-`;
+import { Button, Form } from 'react-bootstrap';
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -56,16 +32,18 @@ const LoginForm: React.FC = () => {
   }
   
   return (
-    <LoginFormStyle onSubmit={handleSubmit(onSubmit)}>
-      <div>ID</div>
-      <InputBox type='text' {...register("id")}></InputBox>
-      <div>PW</div>
-      <InputBox type='password' {...register("pw")}></InputBox>
-      <div>
-        <SubmitButton type='submit' value='로그인' />
-        <RegisterButton type='button' onClick={() => {navigate(URL.register)}}>회원가입</RegisterButton>
-      </div>
-    </LoginFormStyle>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form.Group className="md-3">
+        <Form.Label>ID</Form.Label>
+        <Form.Control type='text' {...register("id")}></Form.Control>
+      </Form.Group>
+      <Form.Group className="md-3">
+        <Form.Label>PW</Form.Label>
+        <Form.Control type='password' {...register("pw")}></Form.Control>
+      </Form.Group>
+      <Button type='submit'>로그인</Button>
+      <Button type='button' onClick={() => {navigate(URL.register)}}>회원가입</Button>
+    </Form>
   );
 }
 

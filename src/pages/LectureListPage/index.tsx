@@ -11,7 +11,7 @@ interface LobbyInfo {
 const LobbyPage: React.FC<LobbyInfo> = ({ userInfo }) => {
   return (
     userInfo ?
-      <Page>
+      <Page userInfo={userInfo}>
         <FullLectureList userInfo={userInfo} />
       </Page>
       :

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Button, Card } from 'react-bootstrap';
 
 import { ILectureInfo, ISimpleArticleInfo, IUserInfo } from '../data/types';
 
@@ -37,24 +38,25 @@ const Lecture: React.FC<LectureProps> = ({ id, userInfo }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
-  const articles = lectureInfo ? lectureInfo.articles.map((article: ISimpleArticleInfo, index: number) => {
+  const articles = lectureInfo?.articles.length !== 0 ? lectureInfo?.articles.map((article: ISimpleArticleInfo, index: number) => {
     return (
-      <div key={index} onClick={() => navigate(`${URL.article}${article.id}`)}>
-        <div>{article.title}</div>
-        <div>{article.createdat}</div>
-      </div>
+      <Card style={{ width: "100%", margin: "20px", padding: "10px" }} key={index} onClick={() => navigate(`${URL.article}${article.id}`)}>
+        <Card.Title>{article.title}</Card.Title>
+        <Card.Subtitle>{article.createdat}</Card.Subtitle>
+      </Card>
     );
-  }) : (<>{text.lecture.noArticle}</>);
+  }) : (
+    <Card style={{ width: "100%", margin: "20px", padding: "10px" }}>
+      <Card.Title>{text.lecture.noArticle}</Card.Title>
+    </Card>);
   return (
     lectureInfo ?
       <>
-        <div>
-          <h1>{lectureInfo.name}</h1>
-          {lectureInfo.professorid === userInfo.id ? <button onClick={() => { navigate(`${URL.articleWrite}${id}`) }}>글쓰기</button> : <></>}
-        </div>
+        <h1>{lectureInfo.name}</h1>
+        {lectureInfo.professorid === userInfo.id ? <Button onClick={() => { navigate(`${URL.articleWrite}${id}`) }}>글쓰기</Button> : <></>}
         {lectureInfo.professor}
         {articles}
-        <button onClick={() => window.history.back()}>뒤로</button>
+        <Button variant="secondary" onClick={() => window.history.back()}>뒤로</Button>
       </>
       :
       <></>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
+import { Button, Form } from 'react-bootstrap';
 
 import { IArticleWriteInfo, IUserInfo } from '../data/types';
 
@@ -48,11 +49,11 @@ const ArticleWriteBox: React.FC<ArticleWriteBoxProps> = ({ id, userInfo }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input type='text' {...register('title')} placeholder='제목을 입력하세요'></input>
+    <Form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
+      <Form.Control className="md-3" type='text' placeholder='제목을 입력하세요.' {...register('title')}></Form.Control>
       <ReactQuill modules={modules} onChange={(value) => setValue('content', value)} />
-      <input type='submit' value='작성' />
-    </form>
+      <Button type='submit'>작성</Button>
+    </Form>
   );
 }
 

@@ -13,9 +13,9 @@ interface ArticleProps {
 const ArticlePage: React.FC<ArticleProps> = ({ userInfo }) => {
   const { id } = useParams();
   return (
-    <Page>
+    <Page userInfo={userInfo}>
         <Article id={Number(id)} />
-      </Page>
+    </Page>
   );
 }
 

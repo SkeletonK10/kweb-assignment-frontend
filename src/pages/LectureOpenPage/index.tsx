@@ -12,7 +12,7 @@ interface LectureOpenProps {
 const LectureOpenPage: React.FC<LectureOpenProps> = ({ userInfo }) => {
   return (
     userInfo ?
-      <Page>
+      <Page userInfo={userInfo}>
         <h1>강의 개설</h1>
         <LectureOpenForm />
       </Page>

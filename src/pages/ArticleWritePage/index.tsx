@@ -43,7 +43,7 @@ const ArticleWritePage: React.FC<ArticleProps> = ({ userInfo }) => {
   
   return (
     userInfo ?
-      <Page>
+      <Page userInfo={userInfo}>
         <h1>{lectureName} 게시글 작성</h1>
         <ArticleWriteBox id={Number(id)} userInfo={userInfo} />
       </Page>

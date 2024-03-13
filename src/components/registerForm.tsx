@@ -2,30 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import styled from '@emotion/styled';
+import { Button, Form } from 'react-bootstrap';
 
 import { IRegisterInfo } from '../data/types';
 
 import { text, URL } from '../data';
-
-const RegisterFormStyle = styled.form`
-  margin: 50px auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const InputBox = styled.input`
-  width: 200px;
-  
-  margin: 10px;
-`;
-
-const SubmitButton = styled.input`
-  width: 70px;
-  margin: 20px;
-`;
 
 const RegisterForm: React.FC = () => {
   const navigate = useNavigate();
@@ -48,23 +29,40 @@ const RegisterForm: React.FC = () => {
     }
   }
   return (
-    <RegisterFormStyle onSubmit={handleSubmit(onSubmit)}>
-      <div style={{margin: "10px"}}>
-        <input type="radio" {...register("isstudent")} value="true" defaultChecked={true} />학생
-        <input type="radio" {...register("isstudent")} value="false" />교수자
-      </div>
-      <div>ID (3자 이상 32자 이하의 영문 및 숫자)</div>
-      <InputBox type='text' {...register("id")}></InputBox>
-      <div>비밀번호 (8자 이상의 영문 및 숫자)</div>
-      <InputBox type='password' {...register("pw")}></InputBox>
-      <div>이름</div>
-      <InputBox type='text' {...register("name")}></InputBox>
-      <div>학번</div>
-      <InputBox type='text' {...register("stid")} onChange={(e) => {e.target.value = e.target.value.replace(/[^0-9]/g, '');}}></InputBox>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <SubmitButton type='submit' value='회원가입' />
+        <Form.Check
+          type="radio"
+          value="true"
+          label="학생"
+          defaultChecked={true}
+          {...register("isstudent")}
+        />
+        <Form.Check // prettier-ignore
+          type="radio"
+          value="false"
+          label="교수자"
+          {...register("isstudent")}
+        />
       </div>
-    </RegisterFormStyle>
+      <Form.Group className="mb-3">
+        <Form.Label>ID (3자 이상 32자 이하의 영문 및 숫자)</Form.Label>
+        <Form.Control type='text' {...register("id")}></Form.Control>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>비밀번호 (8자 이상의 영문 및 숫자)</Form.Label>
+        <Form.Control type='password' {...register("pw")}></Form.Control>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>이름</Form.Label>
+        <Form.Control type='text' {...register("name")}></Form.Control>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>학번</Form.Label>
+        <Form.Control type='text' {...register("stid")} onChange={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }}></Form.Control>
+      </Form.Group>
+      <Button type='submit'>회원가입</Button>
+    </Form>
   );
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
 
 import { ILectureOpenInfo } from '../data/types';
 
@@ -28,11 +29,13 @@ const LectureOpenForm: React.FC = () => {
     }
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>강의 이름을 입력하세요.</div>
-      <input type='text' {...register("name")}></input>
-      <input type='submit' value='개설' />
-    </form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form.Group className="mb-3">
+        <Form.Label>강의 이름을 입력하세요.</Form.Label>
+        <Form.Control type='text' {...register("name")}></Form.Control>
+      </Form.Group>
+      <Button type='submit'>개설</Button>
+    </Form>
   );
 }
 

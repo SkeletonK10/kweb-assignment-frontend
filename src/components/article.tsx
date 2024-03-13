@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
+import { Card } from 'react-bootstrap';
 
 import { IArticleInfo } from '../data/types';
 
@@ -37,14 +38,17 @@ const Article: React.FC<ArticleProps> = ({ id }) => {
 
   return (
     articleInfo ?
-      <>
-        <h1>{articleInfo.title}</h1>
-        {articleInfo.createdat}
-        <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(articleInfo.content)}}></div>
-      </>
+      <Card style={{ width: "100%" }}>
+        <Card.Header>
+          <Card.Title>{articleInfo.title}</Card.Title>
+          <Card.Subtitle>{articleInfo.createdat}</Card.Subtitle>
+        </Card.Header>
+        <Card.Body>
+          <Card.Text dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(articleInfo.content)}} />
+        </Card.Body>
+      </Card>
       :
       <></>
-    
   );
 }
 
