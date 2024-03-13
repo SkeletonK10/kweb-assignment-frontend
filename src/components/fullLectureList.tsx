@@ -51,8 +51,8 @@ const FullLectureList: React.FC<UserProps> = ({ userInfo }) => {
   const entries = list.map((row: ISimpleLectureInfo, index: number) => {
     return (
       <tr key={index}>
-        <td onClick={() => navigate(`${URL.lecture}${row.id}`)}>{row.name}</td>
-        <td onClick={() => navigate(`${URL.lecture}${row.id}`)}>{row.professor}</td>
+        <td>{row.name}</td>
+        <td>{row.professor}</td>
         {userInfo.isstudent ? <td><Button onClick={() => handleCourseRegister(row.id)}>수강신청</Button></td> : <></>}
       </tr>
     );
