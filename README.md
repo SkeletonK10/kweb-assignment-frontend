@@ -5,7 +5,7 @@ create-react-app을 사용한 react 기반 사이트입니다.
 ## 테스트 서버 실행 방법
 
 1. 저장소 다운로드
-   `$ git clone https://github.com/skeletonk10/kweb-assignment-frontend`
+   `$ git clone https://github.com/skeletonk10/kweb-assignment-frontend.git`
 
 2. kweb-assignment-frontend 폴더에서 콘솔로 다음 명령어 입력
    `$ npm i`
